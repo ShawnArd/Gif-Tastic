@@ -1,0 +1,19 @@
+.jumbotron {
+    width: 80%;
+    margin: 0px auto;
+    background: rgba(77, 199, 255, 0.5);
+}
+
+body {
+    background-image: url(background.jpg);
+    background-repeat: no-repeat;
+    background-size: 2000px 1007px;
+    font-size:30px;
+    font-weight: bold
+   
+}
+
+#gif-btn {
+    padding: 5px;
+    margin: 0 5px;
+}
