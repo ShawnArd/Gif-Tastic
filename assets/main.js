@@ -67,7 +67,7 @@ function renderButtons(){
 
 	$("#gif-btn").empty();
 	for(var i = 0; i < animeShows.length; i++){
-		var animeBtn = $('<button>').text(animeShows[i]).addClass('animeBtn').attr({'data-name': animeShows[i]});
+		var animeBtn = $("<button>").text(animeShows[i]).addClass('animeBtn').attr({'data-name': animeShows[i]});
 		$("#gif-btn").append(animeBtn);
   }
 //   console.log("here")
@@ -85,15 +85,18 @@ $("#add-anime").on("click", function(event) {
   // calling renderButtons which handles the processing of our movie array
   renderButtons();
 });
-$(".animeBtn").on("click", function() {
-  // Grabbing and storing the data-animal property value from the button
+renderButtons(); 
+
+$(document).on("click", ".animeBtn", function() {
+
+  $("#gif-display").empty();
+  
   var anime = $(this).attr("data-name");
 
-  // Constructing a queryURL using the animal name
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
     anime + "&api_key=dc6zaTOxFJmzC&limit=10";
 
-  // Performing an AJAX request with the queryURL
+  // Performing an AJAX request 
   $.ajax({
     url: queryURL,
     method: "GET"
@@ -110,7 +113,7 @@ $(".animeBtn").on("click", function() {
       for (var i = 0; i < results.length; i++) {
 
         // Creating and storing a div tag
-        var animeDiv = $("<div>");
+        var animeDiv = $("<div class='gif-style'>");
 
         // Creating a paragraph tag with the result item's rating
         var p = $("<p>").text("Rating: " + results[i].rating);
@@ -130,4 +133,4 @@ $(".animeBtn").on("click", function() {
     });
 });
 
-renderButtons()
+//having trouble incorporating the stop and starting on click, so that would be next
